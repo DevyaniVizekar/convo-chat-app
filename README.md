@@ -1,102 +1,98 @@
-# Convo Real-Time Chat
+<div align="center">
 
-A clean, fast, responsive real-time chat application built for the Convo Software Developer assignment.
+# 💬 Convo Chat
 
-## Stack
+### A Real-Time Chat Application
 
-- **Frontend:** React + Vite
-- **Backend:** Node.js + Express
-- **Real-time:** Socket.IO (mandatory requirement)
-- **Database:** SQLite via `better-sqlite3`
-- **Styling:** Plain CSS, pastel UI, no heavy UI framework
+A clean and responsive real-time chat application built with React, Node.js, Express, Socket.IO, and SQLite.
 
-## Implemented requirements
+<br>
 
-- Username-based dummy login
-- Clean responsive chat interface
-- Send messages
-- REST API for sending messages
-- REST API for fetching chat history
-- Instant Socket.IO message delivery without refresh
-- Broadcast to connected users in real time
-- Graceful connect/disconnect handling
-- Typing indicator
-- Online/offline user status
-- Delivered/read status for messages
-- Message timestamps
-- Persistent message storage in SQLite
-- History remains after refresh/restart
-- API and Socket.IO error handling
-- Meaningful frontend/backend folder structure
-- Fast Vite production build
+## 🚀 Live Demo
 
-## Project structure
+### [🌐 Open Convo Chat](https://convo-chatapp.vercel.app/)
 
-```text
-Convo-realtime-chat/
-├── client/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ChatHeader.jsx
-│   │   │   ├── MessageBubble.jsx
-│   │   │   ├── MessageComposer.jsx
-│   │   │   └── UserSidebar.jsx
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── styles.css
-│   ├── .env.example
-│   ├── index.html
-│   ├── package.json
-│   └── vite.config.js
-├── server/
-│   ├── src/
-│   │   ├── db.js
-│   │   ├── server.js
-│   │   ├── routes.js
-│   │   └── socket.js
-│   ├── data/              # SQLite database is created automatically
-│   ├── .env.example
-│   └── package.json
-├── .gitignore
-├── package.json
-└── README.md
-```
+</div>
 
-## Requirements
+---
 
-- Node.js **20+** recommended
-- npm **10+**
+## ✨ About The Project
 
-No MongoDB account is required because this implementation uses a local SQLite database.
+**Convo Chat** is a real-time web-based chat application designed to provide a simple, responsive, and seamless messaging experience.
 
-## 1. Install
+Users can join the chat with a username, send messages instantly, view previous messages, and communicate with other connected users in real time using **Socket.IO**.
 
-Open a terminal in the project root:
+The application uses **SQLite** for message persistence, allowing chat history to be retrieved after refreshing the page.
 
-```bash
-npm install
-npm run install:all
-```
+---
 
-If you prefer separate commands:
+## 🚀 Features
 
-```bash
-npm install
-cd server && npm install
-cd ../client && npm install
-```
+- 💬 **Real-Time Messaging** — Messages are delivered instantly using Socket.IO.
+- 👤 **Username-Based Login** — Users can join the chat using a username.
+- 🕒 **Message Timestamps** — Each message displays its timestamp.
+- 💾 **Persistent Chat History** — Messages are stored using SQLite.
+- 🔄 **Chat History on Refresh** — Previous messages can be retrieved after refreshing.
+- 🟢 **Online User Status** — Displays connected users.
+- 📱 **Responsive UI** — Works across desktop and mobile screen sizes.
+- ⚡ **REST API** — Backend provides APIs for sending and retrieving messages.
+- 🔌 **Socket.IO Communication** — Enables real-time client-server communication.
+- 🛡️ **Error Handling** — Handles API and connection errors gracefully.
+- 🎨 **Clean & Minimal Interface** — Designed with a modern, user-friendly UI.
 
-## 2. Environment variables
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- ⚛️ React
+- ⚡ Vite
+- 🎨 CSS
+- 🔌 Socket.IO Client
 
 ### Backend
 
-Copy:
+- 🟢 Node.js
+- 🚂 Express.js
+- 🔌 Socket.IO
+- 🗄️ SQLite
+- 🌐 REST APIs
 
-```text
-server/.env.example -> server/.env
+### Deployment
+
+- ▲ Vercel
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/DevyaniVizekar/convo-chat-app.git
+cd convo-chat-app
 ```
 
-Default values:
+### 2️⃣ Install Dependencies
+
+Install the root dependencies:
+
+```bash
+npm install
+```
+
+Then install dependencies for both frontend and backend:
+
+```bash
+npm run install:all
+```
+
+### 3️⃣ Configure Environment Variables
+
+#### Backend
+
+Create a `.env` file inside the `server` directory:
 
 ```env
 PORT=5000
@@ -104,116 +100,66 @@ CLIENT_ORIGIN=http://localhost:5173
 DB_PATH=./data/chat.sqlite
 ```
 
-### Frontend
+#### Frontend
 
-Copy:
-
-```text
-client/.env.example -> client/.env
-```
-
-Default value:
+Create a `.env` file inside the `client` directory:
 
 ```env
 VITE_API_URL=http://localhost:5000
 ```
 
-## 3. Run locally
+### 4️⃣ Run the Application
 
-### Easiest: run both frontend and backend
-
-From the root:
+From the project root:
 
 ```bash
 npm run dev
 ```
 
-Open:
+The frontend will run on:
 
 ```text
 http://localhost:5173
 ```
 
-### Run separately
+The backend will run on:
 
-Terminal 1:
-
-```bash
-npm run dev --prefix server
+```text
+http://localhost:5000
 ```
 
-Terminal 2:
+---
 
-```bash
-npm run dev --prefix client
-```
+## 🔑 Key Highlights
 
-## 4. Test real-time chat
+- ⚡ Real-time communication without page refresh
+- 🔌 WebSocket-based communication using Socket.IO
+- 🗄️ SQLite-based message persistence
+- 🌐 RESTful backend APIs
+- 📱 Responsive and user-friendly interface
+- 🧩 Separate frontend and backend architecture
+- 🚀 Deployed and accessible online through Vercel
 
-1. Open `http://localhost:5173` in two browser tabs.
-2. Enter a different username in each tab.
-3. Send a message from either tab.
-4. The other tab receives it immediately through **Socket.IO**, without refresh.
-5. Start typing in one tab to see the typing indicator in the other.
-6. Refresh a tab: previous messages are loaded from SQLite through the history API.
+---
 
-## REST API
+## 🌐 Live Application
 
-### Health check
+<div align="center">
 
-```http
-GET /api/health
-```
+### 🚀 Try Convo Chat
 
-### Fetch chat history
+[**👉 Open Convo Chat**](https://convo-chatapp.vercel.app/)
 
-```http
-GET /api/messages?limit=100
-```
+</div>
 
-### Send a message
+---
 
-```http
-POST /api/messages
-Content-Type: application/json
+<div align="center">
 
-{
-  "username": "Devyani",
-  "text": "Hello!"
-}
-```
+### Built with ❤️ by
 
-### Mark a message as delivered/read
+# **Devyani Vizekar**
 
-```http
-PATCH /api/messages/:id/status
-Content-Type: application/json
+💻 Frontend Developer | React Enthusiast
 
-{
-  "status": "read"
-}
-```
-
-## Socket.IO events
-
-### Client -> server
-
-- `user:join`
-- `message:send`
-- `typing:start`
-- `typing:stop`
-- `message:read`
-
-### Server -> client
-
-- `user:joined`
-- `user:left`
-- `presence:update`
-- `typing:update`
-- `message:new`
-- `message:status`
-- `server:error`
-
-## Error handling
-
-The backend validates usernames and message content, returns structured API errors, catches database failures, and handles Socket.IO errors. The frontend shows a lightweight error banner and reconnect state instead of crashing the page.
+</div>
