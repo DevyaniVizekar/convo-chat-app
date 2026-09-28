@@ -35,7 +35,7 @@ app.use((err, _req, res, _next) => {
 registerSocketHandlers(io);
 
 server.listen(port, () => {
-  console.log(`Convo chat API running on http://localhost:${port}`);
+  console.log(`Convo chat API running on port ${port}`);
 });
 
 const shutdown = () => {
